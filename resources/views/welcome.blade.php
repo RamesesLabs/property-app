@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="links">
-
+                    <a href="/properties">My Properties</a>
                 </div>
             </div>
         </div>
