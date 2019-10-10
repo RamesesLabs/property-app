@@ -2,15 +2,15 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PropertiesSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(PropertiesSeeder::class);
+        factory(App\Property::class, 10)->create();
     }
 }
