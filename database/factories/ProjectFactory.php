@@ -5,8 +5,9 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(\App\Property::class, function (Faker $faker) {
+$factory->define(\App\Project::class, function (Faker $faker) {
     return [
+        'project_name' => $faker->sentence(2),
         'property_name' => $faker->sentence(2),
         'address' => $faker->streetAddress(),
         'city' => $faker->city(1),

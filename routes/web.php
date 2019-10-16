@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('properties', 'PropertyController@index');
+Route::get('properties/{property}', 'PropertyController@show');
+Route::get('new-property', 'PropertyController@create');
+Route::get('projects', 'ProjectController@index');
+Route::get('projects/{project}', 'ProjectController@show');
+
