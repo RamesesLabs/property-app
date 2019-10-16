@@ -13,7 +13,19 @@
             <div class="card card-default">
                 <div class="card-header">Add Property</div>
                 <div class="card-body">
-                    <form action="">
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-group">
+                            @foreach ($errors->all() as $error)
+                                <li class="list-group-item">
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <form action="/create-property" method="POST">
+                        @csrf
                         <div class="form-group">
                             <input type="text" class="form-control" name="property_name" placeholder="Property Name">
                         </div>
@@ -27,11 +39,18 @@
                             <input type="text" class="form-control" name="state" placeholder="State">
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control" name="zipcode" placeholder="zipcode">
+                        </div>
+                        <div class="form-group justify-content-start pt-2">
+                            <label for="completed">Completed</label>
+                            <input type="checkbox" class="form-control" name="completed" label="completed">
+                        </div>
+                        <div class="form-group">
                             <textarea name="comments" cols="15" rows="5" class="form-control" placeholder="Comments on Property"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <button class="btn btn-success bg-info">Create Property</button>
+                        <div class="form-group text-center">
+                            <button class="btn btn-success bg-info" type="submit">Create Property</button>
                         </div>
                     </form>
                 </div>
