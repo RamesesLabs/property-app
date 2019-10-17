@@ -10,11 +10,11 @@
         {{ $property->property_name }}
       </h1>
       <div class="container">
-        <div class="row text-center">
+        <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card" style="width: 20rem;">
+                <div class="card text-center border-info mb-3 bg-light" style="width: 20rem;">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $property->property_name }}</h5>
+                        <h5 class="card-header">{{ $property->property_name }}</h5>
                         <p class="card-text">{{ $property->comments }}</p>
                         </div>
                         <ul class="list-group list-group-flush">

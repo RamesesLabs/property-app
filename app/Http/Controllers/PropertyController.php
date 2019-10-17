@@ -14,9 +14,9 @@ class PropertyController extends Controller
 
     }
 
-    public function show($propertyId) {
+    public function show(Property $property) {
 
-        return view('properties.show')->with('property', Property::find($propertyId));
+        return view('properties.show')->with('property', $property);
     }
 
     public function create() {
@@ -47,18 +47,21 @@ class PropertyController extends Controller
 
         $property->save();
 
+        session()->flash('success', 'Property created successfully.');
+
         return redirect('/properties');
 
 
     }
 
-    public function edit($propertyId) {
-        $property = Property::find($propertyId);
+    public function edit(Property $property) {
 
         return view('properties.edit')->with('property', $property);
     }
 
-    public function update($propertyId) {
+    // TODO: Fix Update Validation Rules to use non-updated fields current information.
+
+    public function update(Property $property) {
         $this->validate(request(), [
             'property_name' => 'required|min:6|max:50',
             'address' => 'required',
@@ -70,8 +73,6 @@ class PropertyController extends Controller
 
         $data = request()->all();
 
-        $property = Property::find($propertyId);
-
         $property->property_name = $data['property_name'];
         $property->address = $data['address'];
         $property->city = $data['city'];
@@ -82,7 +83,18 @@ class PropertyController extends Controller
 
         $property->save();
 
+        session()->flash('success', 'Property edited successfully.');
+
         return redirect('/properties');
 
+    }
+
+    public function destroy(Property $property)
+    {
+      $property->delete();
+
+      session()->flash('success', 'Property deleted successfully.');
+
+      return redirect('/properties');
     }
 }
