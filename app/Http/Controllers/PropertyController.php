@@ -50,8 +50,6 @@ class PropertyController extends Controller
         session()->flash('success', 'Property created successfully.');
 
         return redirect('/properties');
-
-
     }
 
     public function edit(Property $property) {
@@ -64,10 +62,7 @@ class PropertyController extends Controller
     public function update(Property $property) {
         $this->validate(request(), [
             'property_name' => 'required|min:6|max:50',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zipcode' => 'required',
+            'completed' => 'required',
             'comments' => 'required'
         ]);
 
@@ -95,6 +90,14 @@ class PropertyController extends Controller
 
       session()->flash('success', 'Property deleted successfully.');
 
+      return redirect('/properties');
+    }
+
+    public function complete(Property $property)
+    {
+      $property->completed = true;
+      $property->save();
+      session()->flash('success', 'Property completed successfully.');
       return redirect('/properties');
     }
 }

@@ -7,6 +7,10 @@
 @section('content')
 
 <h1 class="text-center my-5">Projects Page</h1>
+
+    <div class="text-center my-3 pb-3">
+        <a href="/new-project" class="nav-link"><button type="button" class="btn btn-primary btn-lg">Add Project</button></a>
+    </div>
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="card card-default">
